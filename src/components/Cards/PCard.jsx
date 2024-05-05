@@ -21,8 +21,8 @@ const PCard = () => {
             className="w-full sm:w-1/2 md:w-1/3 px-4 h-full"
             key={product.id}
           >
-            <div className="container mx-auto my-12 h-full">
-              <div className="bg-white max-w-sm rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 h-full">
+            <div className="container  mx-auto my-12 h-full">
+              <div className="bg-white border border-slate-200 max-w-sm rounded-lg overflow-hidden shadow-2xl shadow-slate-400 hover:shadow-lg transition duration-300 h-full">
                 <div className="relative h-full">
                   <img
                     src={product.images[0]}
