@@ -43,12 +43,25 @@ const Search = () => {
         </button>
       </div>
       {(apiData.length > 0) & (inputVal != "") ? (
-        <ul className="absolute top-[2.60rem] px-2  bg-slate-200 w-[20rem] ml-7 rounded-b-md border border-orange-300">
+        <ul className="absolute top-[2.60rem] px-2  bg-slate-100 w-[20rem] ml-7 rounded-b-md border border-orange-300">
           {apiData
             .filter((filters) => filters.title.toLowerCase().includes(inputVal))
             .map((dat) => (
-              <li className="border-b  border-slate-400 py-2" key={dat.id}>
-                {dat.title}
+              <li className="border-b  border-orange-500 py-2" key={dat.id}>
+                <div className="flex gap-5 max-h-[3.25rem] flex-1">
+                  <img
+                    className="bg-cover bg-center"
+                    src={dat.thumbnail}
+                    height={42}
+                    width={64}
+                  />
+                  <div className="flex flex-col w-full justify-center"
+                  >
+                  <p className="my-1 text-sm italic">{dat.title}</p>
+                  <p className="text-sm text-gray-500">{dat.category}</p>
+                  </div>
+
+                </div>
               </li>
             ))}
         </ul>

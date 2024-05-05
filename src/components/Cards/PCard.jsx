@@ -27,17 +27,18 @@ const PCard = () => {
                   <img
                     src={product.images[0]}
                     alt="Product Image"
-                    className="w-full max-h-56 bg-current bg-center bg-cover"
+                    className="h-56 w-full flex flex-col justify-between p-4 bg-cover bg-center"
                   />
                 </div>
                 <div className="p-4 h-full">
                   <div className="text-xl font-semibold mb-2">
                     {product.title}
                   </div>
-                  <div className="text-gray-600 mb-4 overflow-hidden text-overflow-ellipsis h-full">
-                    {product.description}
+                  <div className="text-gray-600 text-md mb-4 overflow-hidden text-overflow-ellipsis h-full">
+                    <span className="text-black text-lg">Category: </span>{product.category}
                   </div>
                   <p className="text-gray-700 mb-2">${product.price}</p>
+                  <p className="text-gray-700 mb-2">{product.discountPercentage}% discount</p>
                 </div>
                 <div className="p-4 bg-gray-100 h-full">
                   <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full">
