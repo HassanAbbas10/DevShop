@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Search from "./../Search/Search";
-import Modal from "../Modal/Modal";
+import orange from "@mui/material/colors/orange";
+import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 
 const Header = () => {
   return (
@@ -35,7 +36,23 @@ const Header = () => {
               </Link>
             </li>
 
-            <Modal />
+            <li>
+              <Link to="/cart" className="text-orange-500 italic">
+                
+                  <ShoppingCartTwoToneIcon
+                    className="absolute"
+                    sx={{ color: orange[700] }}
+                  />
+
+                  <span
+                    className=" text-white bg-orange-500 relative bottom-[1.3rem] 
+                     py-[0.1rem] left-3 px-2 border-orange-400 rounded-full"
+                  >
+                    0
+                  </span>
+                
+              </Link>
+            </li>
           </div>
         </div>
       </div>

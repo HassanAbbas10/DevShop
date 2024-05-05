@@ -3,6 +3,7 @@ import Footer from './components/Footer/Footer';
 import Products from './Pages/Products';
 import Home from './Pages/Home'
 import Contact from './Pages/Contact'
+import Cart from './Pages/Cart'
 import './App.css';
 
 import {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
        {
         path:'/contact',
         element:<Contact/>
+       },
+       {
+        path:'/cart',
+        element:<Cart/>
        },
     ]
   },
