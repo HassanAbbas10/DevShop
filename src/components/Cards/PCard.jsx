@@ -37,7 +37,7 @@ const PCard = () => {
                   <div className="text-gray-600 text-md mb-4 overflow-hidden text-overflow-ellipsis h-full">
                     <span className="text-black text-lg">Category: </span>{product.category}
                   </div>
-                  <p className="text-gray-700 mb-2">${product.price}</p>
+                  <p className="text-gray-700 mb-2 ">${product.price}</p>
                   <p className="text-gray-700 mb-2">{product.discountPercentage}% discount</p>
                 </div>
                 <div className="p-4 bg-gray-100 h-full">
