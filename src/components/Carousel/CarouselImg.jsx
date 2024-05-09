@@ -32,11 +32,11 @@ const CarouselImg = () => {
         {apiDataa.length > 0 ? (
           <div>
              {apiDataa.map((data) => (
-          <CarouselItem key={data.products.id}>
+          <CarouselItem key={data.id}>
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <img src={data.products.images[1]} className="" />
+                  <img src={data.images[1]} className="center" />
                 </CardContent>
               </Card>
             </div>
@@ -44,7 +44,7 @@ const CarouselImg = () => {
         ))}
           </div>
           
-         ) : <>not anything</> }
+         ) : <div>not anything</div> }
        
       </CarouselContent>
       <CarouselPrevious />
