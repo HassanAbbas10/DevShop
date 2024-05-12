@@ -1,14 +1,12 @@
-import PCard from "@/components/Cards/PCard"
+import PCard from "@/components/Cards/PCard";
 // import Search from "@/components/Search"
-
 
 const Products = () => {
   return (
     <div>
-      
-    <PCard />
+      <PCard />
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;
