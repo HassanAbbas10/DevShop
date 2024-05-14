@@ -15,6 +15,7 @@ const PCard = () => {
   return (
     
     <div className="flex flex-col min-h-screen justify-between">
+      {products.length > 0 ?
       <div className="container mx-auto flex flex-wrap justify-between">
         {products.map((product) => (
           <div
@@ -51,6 +52,7 @@ const PCard = () => {
           </div>
         ))}
       </div>
+      :(<div className="text-lg italic flex flex-1 items-center justify-center">Loading 🛒🧶</div>)}
     </div>
   );
 };
