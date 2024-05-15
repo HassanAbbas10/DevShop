@@ -14,7 +14,7 @@ const Cart = () => {
     }
     getPost();
     
-  }, [0]);
+  }, [apiData]);
   return (
     <div className="flex-col flex items-center py-2 container bg-white gap-8 p-10 text-black text-sm">
   <h1 className="text-2xl font-bold">Cart</h1>
