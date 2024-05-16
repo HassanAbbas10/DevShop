@@ -60,7 +60,7 @@ const PerfumeC = () => {
     ) : (
       <div className="text-2xl italic flex flex-1 items-center justify-center">
         LOADING <spanc className="animate-pulse">🛒</spanc>
-        <span className="animate-spin">🎃</span>
+        <span className="animate-spin">⚽</span>
       </div>
     )}
   </div>
