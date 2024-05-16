@@ -15,33 +15,39 @@ const CarouselImg = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get('https://api.slingacademy.com/v1/sample-data/photos?offset=5&limit=20');
+      const res = await axios.get(
+        "https://api.slingacademy.com/v1/sample-data/photos?offset=5&limit=20"
+      );
       setApiData(res.data.photos);
     };
     fetchData();
   }, []);
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <Carousel
-        plugins={[Autoplay({ delay: 3000 })]}
-        className="w-full h-full"
-      >
-        <CarouselContent className="w-full h-full">
+    <div className="max-w-full max-h-full flex items-center justify-center overflow-hidden">
+      <Carousel plugins={[Autoplay({ delay: 3000 })]} className="w-full h-full">
+        <CarouselContent className="w-full h-full ">
           {apiDataa.length > 0 ? (
             apiDataa.map((data) => (
-              <CarouselItem key={data.id} className="w-full h-full flex items-center justify-center">
-                <div className="p-2 w-full h-full flex items-center justify-center">
-                  <Card className="w-full h-full flex items-center justify-center">
-                    <CardContent className="w-full h-full flex items-center justify-center p-2">
-                      <img src={data.url} alt={data.photographer}  className="max-w-full object-cover " />
-                    </CardContent>
-                  </Card>
-                </div>
+              <CarouselItem
+                key={data.id}
+                className="w-full h-full flex items-center justify-center"
+              >
+                <Card className="">
+                  <CardContent className="w-full h-full flex items-center justify-center p-2">
+                    <img
+                      src={data.url}
+                      alt={data.photographer}
+                      className="max-w-full object-cover "
+                    />
+                  </CardContent>
+                </Card>
               </CarouselItem>
             ))
           ) : (
-            <div className=" italic flex flex-auto  items-center justify-center text-2xl">LOADING 🎃✨</div>
+            <div className="mt-60 italic flex flex-1  items-center justify-center text-2xl">
+              LOADING <span className="animate-spin">🎃</span><span className="animate-pulse">🛒</span>
+            </div>
           )}
         </CarouselContent>
       </Carousel>
