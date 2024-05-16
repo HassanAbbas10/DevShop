@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-
+import { Link } from "react-router-dom";
 const Search = () => {
   const [inputVal, setInputVal] = useState("");
   // export const [state, setState] = useState("");
@@ -48,6 +48,7 @@ const Search = () => {
             .filter((filters) => filters.title.toLowerCase().includes(inputVal))
             .map((dat) => (
               <li className="border-b  border-orange-500 py-2" key={dat.id}>
+                <Link to={`products/${dat.id}`}>
                 <div className="flex gap-5 max-h-[3.25rem] flex-1">
                   <img
                     className="bg-cover bg-center"
@@ -62,6 +63,7 @@ const Search = () => {
                   </div>
 
                 </div>
+                </Link>
               </li>
             ))}
         </ul>

@@ -4,6 +4,7 @@ import Products from "./Pages/Products";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import Cart from "./Pages/Cart";
+import ProductDetails from "./Pages/ProductDetails";
 import "./App.css";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -18,7 +19,7 @@ const Layout = () => {
   );
 };
 
-//TODO:make the Add to cart functionality and make models for the products
+//TODO:Well i still need to add use vigation so i can go to the page giving product info 🎃
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/products/:id",
+        element: <ProductDetails />,
       },
       {
         path: "/contact",
