@@ -17,7 +17,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //submit it to the api
+    //for api call 🎃
     console.log(formData);
   };
 

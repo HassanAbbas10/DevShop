@@ -52,7 +52,7 @@ const PCard = () => {
           </div>
         ))}
       </div>
-      :(<div className="text-lg italic flex flex-1 items-center justify-center">Loading 🛒🧶</div>)}
+      :(<div className="text-2xl animate-bounce italic flex flex-1 items-center justify-center">LOADING 🛒🧶</div>)}
     </div>
   );
 };
