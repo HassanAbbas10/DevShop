@@ -11,8 +11,8 @@ const Search = () => {
     setInputVal(e.target.value);
   };
 
-  const handleClickOutside = (event) => {
-    if (event.target.closest(".search-container")) {
+  const handleClickOutside = (e) => {
+    if (e.target.closest(".search-con")) {
       setIsListOpen(true);
     }
   };
@@ -42,7 +42,7 @@ const Search = () => {
   }, [apiUrl, inputVal]);
 
   return (
-    <div className="container max-w-lg flex flex-col relative z-20 search-container">
+    <div className="container max-w-lg flex flex-col relative z-20 search-con">
       <div className="flex items-center justify-center relative">
         <input
           id="search"
