@@ -22,7 +22,7 @@ const PCard = () => {
               key={product.id}
             >
               <Link to={`/products/${product.id}`}>
-              <div className="container  mx-auto my-12 h-full">
+              <div className="container mx-auto my-12 h-full">
                 <div className="bg-white border border-slate-200 max-w-sm rounded-lg overflow-hidden shadow-2xl shadow-slate-400 hover:shadow-lg transition duration-300 h-full">
                   <div className="relative h-full">
                     <img
