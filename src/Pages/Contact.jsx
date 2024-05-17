@@ -25,7 +25,7 @@ const Contact = () => {
     <div className="flex min-h-screen items-center justify-start bg-white">
       <div className="mx-auto w-full max-w-lg">
         <h1 className="text-4xl font-medium">Contact us</h1>
-        <p className="mt-3">Email us at ABC@domain.com or message us here:</p>
+        <p className="mt-3"> message us here for any query:</p>
 
         <form action="www.ok.com" className="mt-10" onSubmit={handleSubmit}>
           <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />

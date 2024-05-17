@@ -19,7 +19,7 @@ const Layout = () => {
   );
 };
 
-//TODO:Well i still need to add use vigation so i can go to the page giving product info 🎃
+//TODO:Well i still need to add use navigation so i can go to the page giving product info 🎃
 const router = createBrowserRouter([
   {
     path: "/",
