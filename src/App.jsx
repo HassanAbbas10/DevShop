@@ -1,15 +1,16 @@
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Products from "./Pages/Products";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import Cart from "./Pages/Cart";
 import ProductDetails from "./Pages/ProductDetails";
 import "./App.css";
+import { lazy,Suspense } from "react";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const Layout = () => {
+  
   return (
     <div className="app">
       <Header />
@@ -20,6 +21,7 @@ const Layout = () => {
 };
 
 //TODO:Well i still need to add use navigation so i can go to the page giving product info 🎃
+const Products = lazy(() => import("./Pages/Products"));
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,7 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Products />
+          </Suspense>
+        ),
       },
       {
         path: "/products/:id",

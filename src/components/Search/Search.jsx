@@ -14,7 +14,7 @@ const Search = () => {
 
   const handleClickOutside = (event) => {
     if (!event.target.closest(".search-container")) {
-      setIsListOpen(!isListOpen);
+      setIsListOpen(false);
       setInputVal("")
     }
   };
@@ -27,7 +27,7 @@ const Search = () => {
       listfunc = document.removeEventListener("click", handleClickOutside);
     }
     return listfunc;
-  }, []);
+  }, [isListOpen]);
 
   const apiUrl = `https://dummyjson.com/products/search?q=${inputVal}&limit=4`;
   useEffect(() => {
