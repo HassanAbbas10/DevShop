@@ -5,10 +5,28 @@ import { Link } from "react-router-dom";
 const Search = () => {
   const [inputVal, setInputVal] = useState("");
   const [apiData, setApiData] = useState([]);
+  const [isListOpen, setIsListOpen] = useState(false);
 
   const handlechange = (e) => {
     setInputVal(e.target.value);
   };
+
+  const handleClickOutside = (event) => {
+    if (event.target.closest(".search-container")) {
+      setIsListOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    let listfunc;
+    if (isListOpen) {
+     listfunc = document.addEventListener("click", handleClickOutside);
+    } else {
+      listfunc = document.removeEventListener("click", handleClickOutside);
+    }
+    return listfunc;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const apiUrl = `https://dummyjson.com/products/search?q=${inputVal}&limit=4`;
   useEffect(() => {
@@ -24,7 +42,7 @@ const Search = () => {
   }, [apiUrl, inputVal]);
 
   return (
-    <div className="container max-w-lg flex flex-col relative z-20">
+    <div className="container max-w-lg flex flex-col relative z-20 search-container">
       <div className="flex items-center justify-center relative">
         <input
           id="search"
@@ -32,12 +50,13 @@ const Search = () => {
           onChange={handlechange}
           value={inputVal}
           className="px-8 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 rounded-full w-96 xs:w-72"
+          onClick={() => setIsListOpen(true)}
         />
         <button className="bg-orange-500 hover:bg-blue-300 text-white font-bold py-1 px-1.5 border-orange-400 rounded-full absolute lg:right-1 right-9 ">
           <SearchIcon />
         </button>
       </div>
-      {apiData.length > 0 && inputVal !== "" && (
+      {isListOpen && apiData.length > 0 && inputVal !== "" && (
         <ul className="absolute top-full ml-6 lg:ml-2 sm:ml-10 md:ml-10 lg:w-[70%] md:w-[60%] sm:w-[60%] bg-slate-100 rounded-b-md border border-orange-300">
           {apiData
             .filter((filters) => filters.title.toLowerCase().includes(inputVal))
