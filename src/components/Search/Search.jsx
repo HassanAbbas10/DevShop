@@ -48,6 +48,7 @@ const Search = () => {
         <input
           id="search"
           type="text"
+          placeholder="Search your products here 🛒"
           onChange={handlechange}
           value={inputVal}
           className="px-8 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 rounded-full w-96 xs:w-72"
