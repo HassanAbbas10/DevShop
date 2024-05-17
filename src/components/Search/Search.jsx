@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Search = () => {
   const [inputVal, setInputVal] = useState("");
   const [apiData, setApiData] = useState([]);
-  const [isListOpen, setIsListOpen] = useState(true);
+  const [isListOpen, setIsListOpen] = useState(false);
 
   const handlechange = (e) => {
     setInputVal(e.target.value);
@@ -13,7 +13,8 @@ const Search = () => {
 
   const handleClickOutside = (event) => {
     if (!event.target.closest(".search-container")) {
-      setIsListOpen(false);
+      setIsListOpen(!isListOpen);
+      setInputVal("")
     }
   };
 
