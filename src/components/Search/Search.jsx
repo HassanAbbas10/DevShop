@@ -5,28 +5,27 @@ import { Link } from "react-router-dom";
 const Search = () => {
   const [inputVal, setInputVal] = useState("");
   const [apiData, setApiData] = useState([]);
-  const [isListOpen, setIsListOpen] = useState(false);
+  const [isListOpen, setIsListOpen] = useState(true);
 
   const handlechange = (e) => {
     setInputVal(e.target.value);
   };
 
-  const handleClickOutside = (e) => {
-    if (e.target.closest(".search-con")) {
-      setIsListOpen(true);
+  const handleClickOutside = (event) => {
+    if (!event.target.closest(".search-container")) {
+      setIsListOpen(false);
     }
   };
 
   useEffect(() => {
     let listfunc;
-    if (isListOpen) {
-     listfunc = document.addEventListener("click", handleClickOutside);
+    if (isListOpen === true) {
+      listfunc = document.addEventListener("click", handleClickOutside);
     } else {
       listfunc = document.removeEventListener("click", handleClickOutside);
     }
     return listfunc;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isListOpen]);
 
   const apiUrl = `https://dummyjson.com/products/search?q=${inputVal}&limit=4`;
   useEffect(() => {
@@ -42,7 +41,7 @@ const Search = () => {
   }, [apiUrl, inputVal]);
 
   return (
-    <div className="container max-w-lg flex flex-col relative z-20 search-con">
+    <div className="container max-w-lg flex flex-col relative z-20 search-container">
       <div className="flex items-center justify-center relative">
         <input
           id="search"
