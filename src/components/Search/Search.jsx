@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
@@ -26,7 +27,7 @@ const Search = () => {
       listfunc = document.removeEventListener("click", handleClickOutside);
     }
     return listfunc;
-  }, [isListOpen]);
+  }, []);
 
   const apiUrl = `https://dummyjson.com/products/search?q=${inputVal}&limit=4`;
   useEffect(() => {

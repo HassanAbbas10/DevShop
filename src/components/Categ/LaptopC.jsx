@@ -1,5 +1,6 @@
 import { useEffect,useState } from "react"
 import axios from "axios"
+import { Link } from "react-router-dom";
 const PerfumeC = () => {
 
     const[catData,setCatData] = useState([]);
@@ -25,6 +26,7 @@ const PerfumeC = () => {
             className="w-full sm:w-1/2 md:w-1/3 px-4 h-3/4"
             key={product.id}
           >
+            <Link to={`products/${product.id}`}>
             <div className="container  mx-auto my-12 h-full">
               <div className="bg-white border border-slate-200 max-w-sm rounded-lg overflow-hidden shadow-2xl shadow-slate-400 hover:shadow-lg transition duration-300 h-full">
                 <div className="relative h-full">
@@ -54,6 +56,7 @@ const PerfumeC = () => {
                 </div>
               </div>
             </div>
+            </Link>
           </div>
         ))}
       </div>
