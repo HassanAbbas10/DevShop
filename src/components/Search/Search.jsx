@@ -54,7 +54,7 @@ const Search = () => {
           className="px-8 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 rounded-full w-96 xs:w-72"
           onClick={() => setIsListOpen(true)}
         />
-        <button className="bg-orange-500 hover:bg-blue-300 text-white font-bold py-1 px-1.5 border-orange-400 rounded-full absolute lg:right-1 right-9 ">
+        <button  className="bg-orange-500 hover:bg-blue-300 text-white font-bold py-1 px-1.5 border-orange-400 rounded-full absolute lg:right-1 right-9 ">
           <SearchIcon />
         </button>
       </div>
@@ -85,6 +85,8 @@ const Search = () => {
       )}
     </div>
   );
+ 
 };
 
 export default Search;
+

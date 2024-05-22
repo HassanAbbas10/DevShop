@@ -1,6 +1,6 @@
 import PCard from "@/components/Cards/PCard";
 // import Search from "@/components/Search"
-
+// import { ToastContainer } from "react-toastify";
 const Products = () => {
   return (
     <div>
@@ -8,6 +8,7 @@ const Products = () => {
         <h1 className="text-3xl text-black px-4">Product section 🛒</h1>
       </div>
       <PCard />
+      
     </div>
   );
 };
