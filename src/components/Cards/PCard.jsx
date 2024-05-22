@@ -1,21 +1,11 @@
 import { useState, useEffect } from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+
 import axios from "axios"
 import { Link } from "react-router-dom";
 const PCard = () => {
   const [products, setProducts] = useState([]);
-  const HandleClick = () => { 
-    toast("Product added to cart", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  }
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +15,7 @@ const PCard = () => {
 
     fetchData();
   }, []);
+  
   return (
     <div className="flex flex-col min-h-screen justify-between">
       {products.length > 0 ? (
@@ -62,9 +53,7 @@ const PCard = () => {
                   </div>
                   <div className="p-4 bg-gray-100 h-full">
                     
-                        <button onClick={HandleClick} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full">
-                      Add to Cart
-                    </button>
+                     
                    
                     
                   

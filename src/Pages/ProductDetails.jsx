@@ -1,10 +1,24 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const handlee = () => { 
+    toast("Product added to cart", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  
+  }
 
   useEffect(() => {
     async function fetchProduct() {
@@ -51,7 +65,7 @@ const ProductDetail = () => {
                 {product.stock > 0 ? "In Stock" : "Out of Stock"}
               </span>
             </div>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4">
+            <button onClick={handlee} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4">
               Add to Cart
             </button>
             <div className="bg-gray-100 p-4 rounded-lg shadow-md">
@@ -64,6 +78,7 @@ const ProductDetail = () => {
               </p>
             </div>
           </div>
+          <ToastContainer />
         </div>
       ) : (
         <div className="text-center text-2xl">Loading</div>

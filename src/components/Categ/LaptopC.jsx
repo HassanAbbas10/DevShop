@@ -50,9 +50,7 @@ const PerfumeC = () => {
                   </p>
                 </div>
                 <div className="p-4 bg-gray-100 h-full">
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full">
-                    Add to Cart
-                  </button>
+                 
                 </div>
               </div>
             </div>
