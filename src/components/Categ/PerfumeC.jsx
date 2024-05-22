@@ -62,7 +62,7 @@ const PerfumeC = () => {
       </div>
     ) : (
       <div className="text-2xl italic flex flex-1 items-center justify-center">
-        LOADING <spanc className="animate-pulse">🛒</spanc>
+        LOADING <span className="animate-pulse">🛒</span>
         <span className="animate-spin">⚽</span>
       </div>
     )}

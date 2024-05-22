@@ -15,7 +15,8 @@ const HomeDecorC = () => {
         getDecData();
         console.log(decData);
 
-    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
   return (
     <div className="mt-20">
     <h1 className="italic text-center text-3xl text-black ">Home decoration</h1>
@@ -63,7 +64,7 @@ const HomeDecorC = () => {
   </div>
 ) : (
   <div className="text-2xl italic flex flex-1 items-center justify-center">
-    LOADING <spanc className="animate-pulse">🛒</spanc>
+    LOADING <span className="animate-pulse">🛒</span>
     <span className="animate-spin">🎇</span>
   </div>
 )}
