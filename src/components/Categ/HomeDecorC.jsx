@@ -16,7 +16,7 @@ const HomeDecorC = () => {
         console.log(decData);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[setDecData])
   return (
     <div className="mt-20">
     <h1 className="italic text-center text-3xl text-black ">Home decoration</h1>

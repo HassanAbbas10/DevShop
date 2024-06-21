@@ -14,7 +14,7 @@ const PerfumeC = () => {
         getCatData();
         console.log(catData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [setCatData]);
   return (
     <div className="mt-20">
         <h1 className="italic text-center text-3xl text-black ">Fragrances</h1>

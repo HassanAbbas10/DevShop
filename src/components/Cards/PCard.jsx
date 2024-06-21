@@ -14,7 +14,7 @@ const PCard = () => {
     };
 
     fetchData();
-  }, []);
+  }, [setProducts]);
   
   return (
     <div className="flex flex-col min-h-screen justify-between">

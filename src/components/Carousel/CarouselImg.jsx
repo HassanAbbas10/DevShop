@@ -21,7 +21,7 @@ const CarouselImg = () => {
       setApiData(res.data.photos);
     };
     fetchData();
-  }, []);
+  }, [setApiData]);
 
   return (
     <div className="max-w-full max-h-full flex items-center justify-center overflow-hidden">
