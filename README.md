@@ -4,7 +4,7 @@ OVERVIEW
 
 So basically devshop is just like a store where you can find various day to day life items and you  can purchase them
 
-LIVE LINK : [text](https://dev-shop10.netlify.app/)
+LIVE LINK : [DEVSHOP-LINK](https://dev-shop10.netlify.app/)
 
 FEATURES :
 
