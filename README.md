@@ -18,10 +18,11 @@ FEATURES :
 
 RUNNING THE PROJECT :
 
-1. Clone the project locally by running  git clone https://github.com/HassanAbbas10/DevShop.git
-2. Navigate to project by running cd shop
-3. Run npm install to install the dependencies
-4. Run npm dev to start the localhost
+1. Clone the project locally by running
+    git clone https://github.com/HassanAbbas10/DevShop.git
+2. Navigate to project by running **cd shop**
+3. **"Run npm install"** to install the dependencies
+4. **"Run npm dev"** to start the project on localhost
 
 DEV DEPENDENCIES:
 1. REACT
