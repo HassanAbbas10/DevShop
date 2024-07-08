@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import orange from "@mui/material/colors/orange";
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 import Search from "../Search/Search";
 const Header = () => {
+  const cart = useSelector((state) => state.cart.cart);
   return (
     <nav className="top-0 p-3 py-4 z-10 bg-white rounded-b-md border-b border-solid border-slate-300 sticky backdrop-filter backdrop-blur-lg bg-opacity-30">
       <div className="container mx-auto relative">
@@ -37,7 +39,7 @@ const Header = () => {
               <Link to="/cart" className="text-orange-500 italic flex items-center">
                 <ShoppingCartTwoToneIcon sx={{ color: orange[700] }}/>
                 <span className="text-white bg-orange-500 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 py-0.5 px-2 border-orange-400 rounded-full text-xs">
-                  5
+                  {cart.length}
                 </span>
               </Link>
             </li>

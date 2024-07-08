@@ -1,30 +1,29 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { remFromCart } from "@/Redux/cartSlice";
+import LottieAnimation from "@/components/Lotte/LotteAnimation";
 
 const Cart = () => {
-  const [apiData, setProducts] = useState([]);
-  
+  const dispatch = useDispatch();
+  const [amount, setTotalAmount] = useState(0);
+  const cart = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get("https://dummyjson.com/products?q&limit=4");
-        setProducts(response.data.products);
-      } catch (error) {
-        console.error("Error I guess 🎃", error);
-      }
+    if (Array.isArray(cart)) {
+      setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
     }
-    fetchData();
-  }, []);
+  }, [cart]);
 
+  const handleRemove = (item) => {
+    dispatch(remFromCart(item));
+  };
 
   return (
     <div className="container bg-white p-10 text-black text-sm">
       <h1 className="text-2xl font-bold mb-6">Cart</h1>
-
-      {apiData.length > 0 ? (
+      {cart.length > 0 ? (
         <div className="flex flex-col gap-4">
-          {apiData.map((item) => (
+          {cart.map((item) => (
             <div className="flex justify-between items-center border-b pb-2" key={item.id}>
               <div className="flex gap-4 items-center">
                 <img src={item.thumbnail} alt={item.title} className="rounded-md h-24 w-48" />
@@ -32,33 +31,25 @@ const Cart = () => {
                   <h1 className="text-lg font-bold">{item.title}</h1>
                   <p className="text-gray-600 py-2">Price: ${item.price}</p>
                   <div className="flex items-center">
-                    <button className="bg-gray-200 text-gray-600 px-2 py-1 rounded-md mr-2">
-                      -
-                    </button>
-                   
-                    <span className="px-2">2</span>
-                    <button  className="bg-gray-200 text-gray-600 px-2 py-1 rounded-md ml-2">
-                      +
-                    </button>
-                    
-                    <button  className="text-indigo-600 ml-4">
+
+                    <button onClick={() => handleRemove(item)} className="text-white ml-4 border border-orange-500 rounded-3xl p-2 bg-red-500 hover:animate-pulse">
                       Remove
                     </button>
                   </div>
                 </div>
               </div>
-             
-              <p className="font-semibold">${item.price * 2}</p>
+              <p className="font-semibold">${item.price}</p>
             </div>
           ))}
         </div>
       ) : (
-        <div>Loading </div>
+        <div className="flex flex-col justify-center items-center"><LottieAnimation />
+        <span className="text-2xl italic text-rose-500">Cart Is Empty</span>
+        </div>
       )}
-
       <div className="flex justify-between items-center mt-8">
         <h1 className="text-lg font-bold">Total</h1>
-        <p className="font-semibold">$5460</p>
+        <p className="font-semibold">${amount}</p>
       </div>
     </div>
   );

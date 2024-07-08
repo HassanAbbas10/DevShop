@@ -9,6 +9,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import LottieAnimationThird from "../Lotte/LotteanimationThird";
 
 const CarouselImg = () => {
   const [apiDataa, setApiData] = useState([]);
@@ -46,7 +47,7 @@ const CarouselImg = () => {
             ))
           ) : (
             <div className="mt-60 italic flex flex-1  items-center justify-center text-2xl">
-              LOADING <span className="animate-spin">🎃</span><span className="animate-pulse">🛒</span>
+              <LottieAnimationThird/>
             </div>
           )}
         </CarouselContent>

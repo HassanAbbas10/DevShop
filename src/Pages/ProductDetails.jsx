@@ -2,24 +2,29 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/Redux/cartSlice";
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState(null);
-  const handlee = () => { 
-    toast("Product added to cart", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  
-  }
 
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch(addToCart(product));
+      toast("Product added to cart", {
+        position: "bottom-left",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
   useEffect(() => {
     async function fetchProduct() {
       const response = await axios.get(`https://dummyjson.com/products/${id}`);
@@ -65,7 +70,10 @@ const ProductDetail = () => {
                 {product.stock > 0 ? "In Stock" : "Out of Stock"}
               </span>
             </div>
-            <button onClick={handlee} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4">
+            <button
+              onClick={handleAddToCart}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
+            >
               Add to Cart
             </button>
             <div className="bg-gray-100 p-4 rounded-lg shadow-md">

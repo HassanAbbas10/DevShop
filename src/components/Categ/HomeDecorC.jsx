@@ -2,6 +2,8 @@ import { useState,useEffect } from "react"
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import LottieAnimationThird from "../Lotte/LotteanimationThird";
+
 
 const HomeDecorC = () => {
 
@@ -62,8 +64,8 @@ const HomeDecorC = () => {
   </div>
 ) : (
   <div className="text-2xl italic flex flex-1 items-center justify-center">
-    LOADING <span className="animate-pulse">🛒</span>
-    <span className="animate-spin">🎇</span>
+  <LottieAnimationThird
+  />
   </div>
 )}
 </div>

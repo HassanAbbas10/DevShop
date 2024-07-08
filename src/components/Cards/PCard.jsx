@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import axios from "axios"
 import { Link } from "react-router-dom";
+import LottieAnimationSec from "../Lotte/LotteAnimationSec";
 const PCard = () => {
   const [products, setProducts] = useState([]);
 
@@ -67,8 +68,7 @@ const PCard = () => {
         </div>
       ) : (
         <div className="text-2xl italic flex flex-1 items-center justify-center">
-          LOADING <span className="animate-pulse">🛒</span>
-          <span className="animate-spin">🎃</span>
+         <LottieAnimationSec/>
         </div>
       )}
     </div>
