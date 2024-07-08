@@ -17,7 +17,7 @@ const CarouselImg = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
-        "https://api.slingacademy.com/v1/sample-data/photos?offset=5&limit=5"
+        "https://api.slingacademy.com/v1/sample-data/photos?offset=4&limit=4"
       );
       setApiData(res.data.photos);
 
