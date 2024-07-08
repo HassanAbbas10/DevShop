@@ -50,7 +50,7 @@ const CarouselImg = () => {
                       src={data.url}
                       alt={data.photographer}
                       width={700}
-                      height={100}
+                      height={400}
                       className="max-w-full object-cover "
                     />
                   </CardContent>
