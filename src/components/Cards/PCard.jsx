@@ -32,11 +32,6 @@ const PCard = () => {
                   <div className="relative h-full">
                     <img
                       src={product.images[0]}
-                      srcSet={`
-                        ${product.images[0]}?w=400 400w,
-                        ${product.images[0]}?w=800 800w,
-                        ${product.images[0]}?w=1200 1200w
-                      `}
                       sizes="(max-width: 600px) 400px, 
                              (max-width: 1200px) 800px, 
                              1200px"
