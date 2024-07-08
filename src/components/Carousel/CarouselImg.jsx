@@ -46,7 +46,7 @@ const CarouselImg = () => {
               </CarouselItem>
             ))
           ) : (
-            <div className="mt-60 italic flex flex-1  items-center justify-center text-2xl">
+            <div className="m flex flex-1  items-center justify-center ">
               <LottieAnimationThird/>
             </div>
           )}
