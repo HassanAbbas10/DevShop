@@ -34,8 +34,10 @@ const PerfumeC = () => {
                 <div className="relative h-full">
                   <img
                     src={product.images[0]}
+                    width={350}
+                    height={200}
                     alt="Product Image"
-                    className="h-56 w-full flex flex-col justify-between p-4 bg-cover bg-center"
+                    className="h-[20rem] flex flex-col justify-between p-4 object-contain"
                   />
                 </div>
                 <div className="p-4 h-full">

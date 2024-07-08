@@ -31,13 +31,15 @@ const HomeDecorC = () => {
         key={product.id}
       >
         <Link to={`/products/${product.id}`}>
-        <div className="container  mx-auto my-12 h-full">
+        <div className="container  mx-auto my-10 h-full">
           <div className="bg-white border border-slate-200 max-w-sm rounded-lg overflow-hidden shadow-2xl shadow-slate-400 hover:shadow-lg transition duration-300 h-full">
             <div className="relative h-full">
               <img
                 src={product.images[0]}
+                width={350}
+                height={300}
                 alt="Product Image"
-                className="h-56 w-full flex flex-col justify-between p-4 bg-cover bg-center"
+                className="h-[20rem] flex flex-col justify-between p-4 object-contain"
               />
             </div>
             <div className="p-4 h-full">

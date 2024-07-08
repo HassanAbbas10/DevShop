@@ -49,6 +49,8 @@ const CarouselImg = () => {
                     <img
                       src={data.url}
                       alt={data.photographer}
+                      width={700}
+                      height={100}
                       className="max-w-full object-cover "
                     />
                   </CardContent>
