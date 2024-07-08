@@ -20,9 +20,19 @@ const CarouselImg = () => {
         "https://api.slingacademy.com/v1/sample-data/photos?offset=5&limit=20"
       );
       setApiData(res.data.photos);
+
+      // Preload images
+      res.data.photos.forEach((photo) => {
+        const link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "image";
+        link.href = photo.url;
+        document.head.appendChild(link);
+      });
     };
+
     fetchData();
-  }, [setApiData]);
+  }, []);
 
   return (
     <div className="max-w-full max-h-full flex items-center justify-center overflow-hidden">
