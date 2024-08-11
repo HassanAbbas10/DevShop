@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 
-
-import axios from "axios"
+import axios from "axios";
 import { Link } from "react-router-dom";
 import LottieAnimationSec from "../Lotte/LotteAnimationSec";
 const PCard = () => {
   const [products, setProducts] = useState([]);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +14,7 @@ const PCard = () => {
 
     fetchData();
   }, [setProducts]);
-  
+
   return (
     <div className="flex flex-col min-h-screen justify-between">
       {products.length > 0 ? (
@@ -27,51 +25,51 @@ const PCard = () => {
               key={product.id}
             >
               <Link to={`/products/${product.id}`}>
-              <div className="container mx-auto my-12 h-full">
-                <div className="bg-white border border-slate-200 max-w-sm rounded-lg overflow-hidden shadow-2xl shadow-slate-400 hover:shadow-lg transition duration-300 h-full">
-                  <div className="relative h-full">
-                    <img
-                      src={product.images[0]}
-                      sizes="(max-width: 600px) 400px, 
+                <div className="container mx-auto my-12 h-full">
+                  <div className="bg-white border border-slate-200 max-w-sm rounded-lg overflow-hidden shadow-2xl shadow-slate-400 hover:shadow-lg transition duration-300 h-full">
+                    <div className="relative h-full">
+                      <img
+                        src={product.images[0]}
+                        sizes="(max-width: 600px) 400px, 
                              (max-width: 1200px) 800px, 
                              1200px"
-                      alt="Product Image"
-                      className="h-56 w-full flex flex-col justify-between p-4 bg-cover bg-center"
-                    />
-                  </div>
-                  <div className="p-4 h-full">
-                    <div className="text-xl font-semibold mb-2">
-                      {product.title}
+                        alt="Product Image"
+                        className="h-56 w-full flex flex-col justify-between p-4 bg-cover bg-center"
+                      />
                     </div>
-                    <div className="text-gray-600 text-md mb-4 overflow-hidden text-overflow-ellipsis h-full">
-                      <span className="text-black text-lg">Category: </span>
-                      {product.category}
+                    <div className="p-4 h-full">
+                      <div className="text-xl font-semibold mb-2">
+                        {product.title}
+                      </div>
+                      <div className="text-gray-600 text-md mb-4 overflow-hidden text-overflow-ellipsis h-full">
+                        <span className="text-black text-lg">Category: </span>
+                        {product.category}
+                      </div>
+                      <p className="text-gray-700 mb-2 ">
+                        Price: ${product.price}
+                      </p>
+                      <p
+                        className={`text-lg  mb-2 ${
+                          product.stock > 0 ? "text-green-300" : "text-red-400"
+                        }`}
+                      >
+                        {product.stock > 0 ? "In Stock" : "Out of Stock"}
+                      </p>
+                      <p className="text-slate-400 mb-2">
+                        <span className="text-orange-500">Rating :</span> 5 /{" "}
+                        {product.rating}
+                      </p>
                     </div>
-                    <p className="text-gray-700 mb-2 ">Price: ${product.price}</p>
-                    <p className={`text-lg  mb-2 ${product.stock > 0 ? "text-green-300" : "text-red-400" }`}>
-                      {product.stock > 0 ? "In Stock" : "Out of Stock"}  
-                    </p>
-                    <p className="text-slate-400 mb-2">
-                    <span className="text-orange-500">Rating :</span>   5 / {product.rating}
-                    </p>
-                  </div>
-                  <div className="p-4 bg-gray-100 h-full">
-                    
-                     
-                   
-                    
-                  
+                    <div className="p-4 bg-gray-100 h-full"></div>
                   </div>
                 </div>
-
-              </div>
               </Link>
             </div>
           ))}
         </div>
       ) : (
         <div className="text-2xl italic flex flex-1 items-center justify-center">
-         <LottieAnimationSec/>
+          <LottieAnimationSec />
         </div>
       )}
     </div>

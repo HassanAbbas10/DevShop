@@ -9,14 +9,23 @@ import { addToCart, remFromCart } from "@/Redux/cartSlice";
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const cartP = useSelector((state) =>state.cart)
+  const cartP = useSelector((state) => state.cart.cart);
   const [product, setProduct] = useState(null);
 
-  const handleRemFromCart = () =>{
-    if(product.id){
-      dispatch(remFromCart(product.id))
+  const handleRemFromCart = () => {
+    if (product) {
+      dispatch(remFromCart(product));
+      toast("Product removed from cart", {
+        position: "bottom-left",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
-  }
+  };
 
   const handleAddToCart = () => {
     if (product) {
@@ -77,29 +86,22 @@ const ProductDetail = () => {
                 {product.stock > 0 ? "In Stock" : "Out of Stock"}
               </span>
             </div>
-            {product.id == cartP.id ?   <button
-              onClick={handleAddToCart}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
-            >
-              Add to Cart
-            </button>
+            {cartP.some((item) => item.id === product.id) ? (
+              <button
+                onClick={handleRemFromCart}
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
+              >
+                Remove From Cart
+              </button>
+            ) : (
+              <button
+                onClick={handleAddToCart}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
+              >
+                Add to Cart
+              </button>
+            )}
 
-            :
-
-            <button
-            onClick={handleRemFromCart}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
-          >
-            Remove From Cart
-          </button>
-            
-          }
-            <button
-              onClick={handleAddToCart}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
-            >
-              Add to Cart
-            </button>
             <div className="bg-gray-100 p-4 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-2">Details</h2>
               <p className="text-gray-700">
