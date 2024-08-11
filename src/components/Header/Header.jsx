@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import orange from "@mui/material/colors/orange";
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 import Search from "../Search/Search";
+import HeaderSec from "./HeaderSec";
 const Header = () => {
   const cart = useSelector((state) => state.cart.cart);
   return (
+    <>
     <nav className="top-0 p-3 py-4 z-10 bg-white rounded-b-md border-b border-solid border-slate-300 sticky backdrop-filter backdrop-blur-lg bg-opacity-30">
       <div className="container mx-auto relative">
         <div className="flex flex-wrap items-center justify-between px-4">
@@ -46,7 +48,10 @@ const Header = () => {
           </ul>
         </div>
       </div>
+     
     </nav>
+    <HeaderSec/>
+    </>
   );
 };
 

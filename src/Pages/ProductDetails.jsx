@@ -3,13 +3,20 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
-import { addToCart } from "@/Redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, remFromCart } from "@/Redux/cartSlice";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const cartP = useSelector((state) =>state.cart)
   const [product, setProduct] = useState(null);
+
+  const handleRemFromCart = () =>{
+    if(product.id){
+      dispatch(remFromCart(product.id))
+    }
+  }
 
   const handleAddToCart = () => {
     if (product) {
@@ -70,6 +77,23 @@ const ProductDetail = () => {
                 {product.stock > 0 ? "In Stock" : "Out of Stock"}
               </span>
             </div>
+            {product.id == cartP.id ?   <button
+              onClick={handleAddToCart}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
+            >
+              Add to Cart
+            </button>
+
+            :
+
+            <button
+            onClick={handleRemFromCart}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"
+          >
+            Remove From Cart
+          </button>
+            
+          }
             <button
               onClick={handleAddToCart}
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md mb-4"

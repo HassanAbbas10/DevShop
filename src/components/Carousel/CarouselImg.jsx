@@ -6,60 +6,49 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 
 import Autoplay from "embla-carousel-autoplay";
-
-import { useState, useEffect } from "react";
-import axios from "axios";
 import LottieAnimationThird from "../Lotte/LotteanimationThird";
 
 const CarouselImg = () => {
-  const [apiDataa, setApiData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get(
-        "https://api.slingacademy.com/v1/sample-data/photos?offset=4&limit=4"
-      );
-      setApiData(res.data.photos);
-
-      // Preload images
-      res.data.photos.forEach((photo) => {
-        const link = document.createElement("link");
-        link.rel = "preload";
-        link.as = "image";
-        link.href = photo.url;
-        document.head.appendChild(link);
-      });
-    };
-
-    fetchData();
-  }, []);
+  const apiDataa = [
+    {
+      id: 1,
+      url: "https://images.pexels.com/photos/10677487/pexels-photo-10677487.jpeg?auto=compress&cs=largesrgb&w=2400",
+    },
+    {
+      id: 2,
+      url: "https://images.pexels.com/photos/16917459/pexels-photo-16917459/free-photo-of-young-blonde-woman-in-oversized-olive-green-shirt-walking-through-a-house-entrance.jpeg?auto=compress&cs=largesrgb&w=1900",
+    },
+    {
+      id: 3,
+      url: "https://images.pexels.com/photos/57750/pexels-photo-57750.jpeg",
+    },
+    {
+      id: 4,
+      url: "https://images.pexels.com/photos/6941458/pexels-photo-6941458.jpeg",
+    },
+  ];
 
   return (
-    <div className="max-w-full max-h-full flex items-center justify-center overflow-hidden">
-      <Carousel plugins={[Autoplay({ delay: 3000 })]} className="w-full h-full">
-        <CarouselContent className="w-full h-full ">
+    <div className="w-full sm:h-[35rem] flex items-center justify-center overflow-hidden">
+      <Carousel plugins={[Autoplay({ delay: 4000 })]} className="w-full h-full">
+        <CarouselContent className="w-full h-full">
           {apiDataa.length > 0 ? (
             apiDataa.map((data) => (
-              <CarouselItem
-                key={data.id}
-                className="w-full h-full flex items-center justify-center"
-              >
-                <Card className="">
-                  <CardContent className="w-full h-full flex items-center justify-center p-2">
+              <CarouselItem key={data.id} className="w-full h-full">
+                <Card className="w-full h-full">
+                  <CardContent className="pt-1 w-full h-screen">
                     <img
                       src={data.url}
-                      alt={data.photographer}
-                      width={700}
-                      height={400}
-                      className="max-w-full object-cover "
+                      alt="photo"
+                      className="w-full sm:h-[35rem] sm:object-cover object-contain "
                     />
                   </CardContent>
                 </Card>
               </CarouselItem>
             ))
           ) : (
-            <div className="m flex flex-1  items-center justify-center ">
-              <LottieAnimationThird/>
+            <div className="flex flex-1 items-center justify-center">
+              <LottieAnimationThird />
             </div>
           )}
         </CarouselContent>

@@ -1,27 +1,31 @@
-import { useState,useEffect } from "react"
+import { useState,useCallback,useEffect } from "react"
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 import LottieAnimationThird from "../Lotte/LotteanimationThird";
 
 
-const HomeDecorC = () => {
+const HomeDecorC = ({Category,Title}) => {
 
-    const[decData,setDecData]=useState([]);
+  const [decData, setDecData] = useState([]);
 
-    useEffect(()=>{
-        const getDecData = async() =>{
-            const res = await axios.get("https://dummyjson.com/products/category/home-decoration?q&limit=3")
-            setDecData(res.data.products);
-        }
-        getDecData();
-        console.log(decData);
+  const getDecData = useCallback(async () => {
+    try {
+      const res = await axios.get(`https://dummyjson.com/products/category/${Category}?q&limit=3`);
+      setDecData(res.data.products);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }, [Category]); // Depend on 'Category' to refetch data if it changes
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[setDecData])
+  useEffect(() => {
+    getDecData();
+    console.log(decData);
+  }, [getDecData]);
+
   return (
-    <div className="mt-20">
-    <h1 className="italic text-center text-3xl text-black ">Home decoration</h1>
+    <div className="mt-5">
+    <h1 className="italic text-center text-3xl text-black ">{Title}</h1>
 <div className="flex flex-col min-h-1/2 justify-between">
 {decData.length > 0 ? (
   <div className="container mx-auto flex flex-wrap justify-between">
@@ -31,7 +35,7 @@ const HomeDecorC = () => {
         key={product.id}
       >
         <Link to={`/products/${product.id}`}>
-        <div className="container  mx-auto my-10 h-full">
+        <div className="container  mx-auto my-5 h-full">
           <div className="bg-white border border-slate-200 max-w-sm rounded-lg overflow-hidden shadow-2xl shadow-slate-400 hover:shadow-lg transition duration-300 h-full">
             <div className="relative h-full">
               <img
