@@ -43,18 +43,20 @@ const Search = () => {
   }, [apiUrl, inputVal]);
 
   return (
-    <div className="container max-w-lg flex flex-col relative z-20 search-container">
+    <div className="sm:container  sm:max-w-lg w-full flex flex-col relative z-20 search-container">
       <div className="flex items-center justify-center relative">
         <input
           id="search"
           type="text"
-          placeholder="Search your products here 🛒"
+          placeholder="Search your products ... "
           onChange={handlechange}
           value={inputVal}
-          className="px-8 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 rounded-full w-96 xs:w-72"
+          className="sm:px-8 text-sm sm:text-lg py-2 border border-gray-400
+          px-14
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 rounded-full w-[22rem] sm:w-[24rem]"
           onClick={() => setIsListOpen(true)}
         />
-        <button  className="bg-orange-500 hover:bg-blue-300 text-white font-bold py-1 px-1.5 border-orange-400 rounded-full absolute lg:right-1 right-9 ">
+        <button  className="bg-orange-500 hover:bg-blue-300 text-white font-bold py-1 px-1.5 border-orange-400 rounded-full absolute sm:right-1 right-[-0.5rem] ">
           <SearchIcon />
         </button>
       </div>
