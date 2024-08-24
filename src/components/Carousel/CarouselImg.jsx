@@ -37,19 +37,16 @@ const CarouselImg = () => {
           {apiDataa.length > 0 ? (
             apiDataa.map((data) => (
               <CarouselItem key={data.id} className="w-full h-full">
-                 <div className="w-full sm:h-[37rem] h-full ">
-                <Card className="w-full h-full">
-                 
+                <div className="w-full sm:h-[37rem] h-full ">
+                  <Card className="w-full h-full">
                     <CardContent className="w-full sm:h-full h-auto">
                       <img
                         src={data.url}
                         alt="photo"
-                       
                         className=" h-full w-full sm:object-contain object-fill "
                       />
                     </CardContent>
-                  
-                </Card>
+                  </Card>
                 </div>
               </CarouselItem>
             ))
