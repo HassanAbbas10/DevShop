@@ -2,6 +2,8 @@ import CarouselImg from "@/components/Carousel/CarouselImg";
 
 import HomeDecorC from "@/components/Categ/HomeDecorC";
 import Category from "@/components/Categories/Category";
+import { HighLights } from "@/components/FeatureHighlights/HighLights";
+import { Newsletter } from "@/components/NewsLetter/NewsLetter";
 const Home = () => {
   return (
     <div>
@@ -13,6 +15,8 @@ const Home = () => {
       <HomeDecorC Title={"Perfumes"} Category={"fragrances"}/>
       <HomeDecorC Title={"Laptops"} Category={"laptops"}/>
       <HomeDecorC Title={"Home Decoration"} Category={"home-decoration"}/>
+      <HighLights/>
+      <Newsletter/>
     </div>
   );
 };

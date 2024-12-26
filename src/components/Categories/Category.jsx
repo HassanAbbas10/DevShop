@@ -58,7 +58,7 @@ const Category = () => {
             align: "start",
             loop: false,
             skipSnaps: false,
-            slidesToScroll: 1
+            slidesToScroll: 1,
           }}
         >
           <CarouselContent className="-ml-4">
