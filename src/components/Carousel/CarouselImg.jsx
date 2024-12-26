@@ -2,60 +2,117 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-
+import { useState, useEffect } from "react";
 import { summer, summer2, autumn, collage } from "@/assets/index";
-
 import Autoplay from "embla-carousel-autoplay";
 import LottieAnimationThird from "../Lotte/LotteanimationThird";
 
 const CarouselImg = () => {
+  const [api, setApi] = useState(null);
+  const [current, setCurrent] = useState(0);
+
   const apiDataa = [
     {
       id: 1,
       url: summer,
+      title: "Summer Collection",
     },
     {
       id: 2,
       url: summer2,
+      title: "Summer Specials",
     },
     {
       id: 3,
       url: autumn,
+      title: "Autumn Collection",
     },
     {
       id: 4,
       url: collage,
+      title: "Featured Collection",
     },
   ];
 
+  useEffect(() => {
+    if (!api) return;
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <Carousel plugins={[Autoplay({ delay: 4000 })]} className="w-full h-full">
-        <CarouselContent className="w-full h-full">
+    <div className="relative w-full px-4 py-6">
+      <Carousel
+        plugins={[
+          Autoplay({
+            delay: 4000,
+          }),
+        ]}
+        setApi={setApi}
+        className="w-full max-w-7xl mx-auto"
+        opts={{
+          loop: true,
+          align: "center",
+        }}
+      >
+        <CarouselContent className="w-full">
           {apiDataa.length > 0 ? (
             apiDataa.map((data) => (
-              <CarouselItem key={data.id} className="w-full h-full">
-                <div className="w-full sm:h-[37rem] h-full ">
-                  <Card className="w-full h-full">
-                    <CardContent className="w-full sm:h-full h-auto">
-                      <img
-                        src={data.url}
-                        alt="photo"
-                        className=" h-full w-full sm:object-contain object-fill "
-                      />
+              <CarouselItem key={data.id}>
+                <div className="relative">
+                  <Card className="border-0 overflow-hidden bg-gray-50">
+                    <CardContent className="p-0">
+                      <div className="relative aspect-[16/9] sm:aspect-[21/9] overflow-hidden">
+                        <img
+                          src={data.url}
+                          alt={data.title}
+                          className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                          <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+                            {data.title}
+                          </h2>
+                        </div>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
               </CarouselItem>
             ))
           ) : (
-            <div className="flex flex-1 items-center justify-center">
+            <div className="flex flex-1 items-center justify-center min-h-[300px]">
               <LottieAnimationThird />
             </div>
           )}
         </CarouselContent>
+
+        <div className="absolute -left-4 top-1/2 -translate-y-1/2">
+          <CarouselPrevious className="h-12 w-12 border-2" />
+        </div>
+        <div className="absolute -right-4 top-1/2 -translate-y-1/2">
+          <CarouselNext className="h-12 w-12 border-2" />
+        </div>
+
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {apiDataa.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                current === index
+                  ? "bg-white w-8"
+                  : "bg-white/50 hover:bg-white/75"
+              }`}
+            />
+          ))}
+        </div>
       </Carousel>
     </div>
   );

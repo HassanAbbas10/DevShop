@@ -1,73 +1,109 @@
 import { Link } from "react-router-dom";
 import useFetch from "@/Hooks/useFetch/useFetch";
+import { useState } from "react";
 import LottieAnimationThird from "../Lotte/LotteanimationThird";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart,  } from "@/Redux/cartSlice.js"
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const HomeDecorC = ({ Category, Title }) => {
-  const apiUrl = `https://dummyjson.com/products/category/${Category}?q&limit=3`
- 
-  const { data, error, isLoading } = useFetch([`${Category}`],apiUrl);
- 
+  
+    const dispatch = useDispatch();
+   
+    const [product, setProduct] = useState(null);
+  const handleAddToCart = (product) => {
+      if (product) {
+        dispatch(addToCart(product));
+        toast("Product added to cart", {
+          position: "bottom-left",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    };
+  const apiUrl = `https://dummyjson.com/products/category/${Category}?q&limit=5`;
+  const { data, error, isLoading } = useFetch([`${Category}`], apiUrl);
 
-
-  if (error) {
-    <div>The error is {error}</div>;
-  }
+  if (error) return <div>The error is {error}</div>;
+  
   if (isLoading) {
-    <div className="text-2xl italic flex flex-1 items-center justify-center">
-      <LottieAnimationThird />
-    </div>;
+    return (
+      <div className="text-2xl italic flex flex-1 items-center justify-center">
+        <LottieAnimationThird />
+      </div>
+    );
   }
-
 
   return (
-    <div className="mt-5">
-      <h1 className="italic text-center text-3xl text-black ">{Title}</h1>
-      <div className="flex flex-col min-h-1/2 justify-between">
-          <div className="container mx-auto flex flex-wrap justify-between">
-          {Array.isArray(data) && data.length > 0 ? (
-            data.map((product) => (
-              <div
-                className="w-full sm:w-1/2 md:w-1/3 px-4 h-3/4"
-                key={product.id}
-              >
-                {console.log(product)}
-                <Link to={`/products/${product.id}`}>
-                  <div className="container mx-auto my-5 h-full">
-                    <div className="bg-white border border-slate-200 max-w-sm rounded-lg overflow-hidden shadow-2xl shadow-slate-400 hover:shadow-lg transition duration-300 h-full">
-                      <div className="relative h-full">
-                        <img
-                          src={product.images[0]}
-                          width={350}
-                          height={300}
-                          alt="Product Image"
-                          className="h-[20rem] flex flex-col justify-between p-4 object-contain"
-                        />
-                      </div>
-                      <div className="p-4 h-full">
-                        <div className="text-xl font-semibold mb-2">
-                          {product.title}
-                        </div>
-                        <div className="text-gray-600 text-md mb-4 overflow-hidden text-overflow-ellipsis h-full">
-                          <span className="text-black text-lg">Category: </span>
-                          {product.category}
-                        </div>
-                        <p className="text-gray-700 mb-2">${product.price}</p>
-                        <p className="text-gray-700 mb-2">
-                          {product.discountPercentage}% discount
-                        </p>
-                      </div>
-                      <div className="p-4 bg-gray-100 h-full"></div>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))
-          ) : (
-            <div>No products available.</div>
-          )}
-          </div>
-        
+    <div className="mt-8 px-4">
+      <h1 className="text-3xl font-semibold text-center mb-8">{Title}</h1>
+      <div className="container mx-auto">
+        {Array.isArray(data) && data.length > 0 ? (
+             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 mx-16 sm:mx-24">
+             {data.map((cardData) => (
+             
+               <div
+                 key={cardData.id}
+                 className="bg-white rounded-lg overflow-hidden shadow-lg  ring-opacity-40"
+               >
+                 
+                 <div className="relative group">
+                 <div className="w-40 sm:py-10 py-[1.5rem] h-40 sm:h-52 ml-12 overflow-hidden">
+                     <img
+                       className="object-contain w-full h-full"
+                       src={cardData.images[0]}
+                       alt="Product Image"
+                     />
+                   </div>
+                   <div className="absolute top-0 right-0 px-2 py-1 m-2 rounded-md ">
+                    <FavoriteBorderIcon/>
+                   </div>
+                   <div className="absolute top-8 right-0 px-2 py-1 m-2 rounded-md ">
+                    <VisibilityIcon/>
+                   </div>
+                   <div className='absolute left-0 top-3 px-2 py-1 rounded-md bg-red-500 text-white'>
+                     40%
+                   </div>
+                   <button 
+                   onClick={() => handleAddToCart(cardData)}
+                   className='absolute flex inset-0 sm:h-10 h-[1.75rem] bottom-0 justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-black top-[8rem] sm:top-[10.75rem] text-white font-bold rounded-b-md'>Add To Cart</button>
+                 </div>
+                 <div className="p-4">
+                   <h3 className="text-sm font-medium mb-2">{cardData.title}</h3>
+                   
+                   <div className="flex flex-col items-start justify-start">
+                     <span className="font-bold text-lg text-red-500">${cardData.price}</span>
+                     <div className="flex items-center">
+                       {Array.from({ length: 5 }, (_, index) => (
+                         <span
+                           key={index}
+                           className={`text-lg ${index < Math.floor(cardData.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                         >
+                           ★
+                         </span>
+                       ))}
+                       <p className='text-slate-500 pl-1'>
+                        { (cardData.rating)}
+                       </p>
+                     </div>
+             
+                   </div>
+                 </div>
+              
+               </div>
+               ))}
+           </div>
+       
+        ) : (
+          <div className="text-center text-gray-500">No products available.</div>
+        )}
       </div>
     </div>
   );

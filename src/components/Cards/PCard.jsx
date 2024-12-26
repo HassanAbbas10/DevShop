@@ -21,7 +21,7 @@ const PCard = () => {
         <div className="container mx-auto flex flex-wrap justify-between">
           {products.map((product) => (
             <div
-              className="w-full sm:w-1/2 md:w-1/3 px-4 h-full"
+              className="w-full sm:w-1/2 md:w-1/3 px-4 h-fit"
               key={product.id}
             >
               <Link to={`/products/${product.id}`}>
@@ -30,11 +30,9 @@ const PCard = () => {
                     <div className="relative h-full">
                       <img
                         src={product.images[0]}
-                        sizes="(max-width: 600px) 400px, 
-                             (max-width: 1200px) 800px, 
-                             1200px"
+                        
                         alt="Product Image"
-                        className="h-56 w-full flex flex-col justify-between p-4 bg-cover bg-center"
+                        className="h-56 w-full flex flex-col justify-between p-4 object-contain"
                       />
                     </div>
                     <div className="p-4 h-full">
@@ -60,7 +58,7 @@ const PCard = () => {
                         {product.rating}
                       </p>
                     </div>
-                    <div className="p-4 bg-gray-100 h-full"></div>
+                    
                   </div>
                 </div>
               </Link>
