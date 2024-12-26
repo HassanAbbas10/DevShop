@@ -5,7 +5,7 @@ const features = [
   {
     icon: Truck,
     title: "Free Shipping",
-    description: "Free shipping on all orders over $50",
+    description: "Free shipping on all orders over PKR 2400",
   },
   {
     icon: RefreshCw,
