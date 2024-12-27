@@ -16,26 +16,10 @@ const CarouselImg = () => {
   const [current, setCurrent] = useState(0);
 
   const apiDataa = [
-    {
-      id: 1,
-      url: summer,
-      title: "Summer Collection",
-    },
-    {
-      id: 2,
-      url: summer2,
-      title: "Summer Specials",
-    },
-    {
-      id: 3,
-      url: autumn,
-      title: "Autumn Collection",
-    },
-    {
-      id: 4,
-      url: collage,
-      title: "Featured Collection",
-    },
+    { id: 1, url: summer, title: "Summer Collection" },
+    { id: 2, url: summer2, title: "Summer Specials" },
+    { id: 3, url: autumn, title: "Autumn Collection" },
+    { id: 4, url: collage, title: "Featured Collection" },
   ];
 
   useEffect(() => {
@@ -52,6 +36,7 @@ const CarouselImg = () => {
         plugins={[
           Autoplay({
             delay: 4000,
+            stopOnInteraction: false,
           }),
         ]}
         setApi={setApi}
@@ -66,17 +51,17 @@ const CarouselImg = () => {
             apiDataa.map((data) => (
               <CarouselItem key={data.id}>
                 <div className="relative">
-                  <Card className="border-0 overflow-hidden bg-gray-50">
+                  <Card className="border-0 overflow-hidden bg-gray-50 shadow-lg rounded-lg">
                     <CardContent className="p-0">
                       <div className="relative aspect-[16/9] sm:aspect-[21/9] overflow-hidden">
                         <img
                           src={data.url}
                           alt={data.title}
-                          className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
+                          className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                          <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <div className="absolute bottom-4 left-6 text-white">
+                          <h2 className="text-2xl sm:text-3xl font-bold mb-2 shadow-md">
                             {data.title}
                           </h2>
                         </div>
@@ -94,10 +79,10 @@ const CarouselImg = () => {
         </CarouselContent>
 
         <div className="absolute -left-4 top-1/2 -translate-y-1/2">
-          <CarouselPrevious className="h-12 w-12 border-2" />
+          <CarouselPrevious className="h-12 w-12 bg-white border-2 border-gray-300 rounded-full shadow-md hover:scale-110 transition-transform duration-300" />
         </div>
         <div className="absolute -right-4 top-1/2 -translate-y-1/2">
-          <CarouselNext className="h-12 w-12 border-2" />
+          <CarouselNext className="h-12 w-12 bg-white border-2 border-gray-300 rounded-full shadow-md hover:scale-110 transition-transform duration-300" />
         </div>
 
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
@@ -105,7 +90,7 @@ const CarouselImg = () => {
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 current === index
                   ? "bg-white w-8"
                   : "bg-white/50 hover:bg-white/75"

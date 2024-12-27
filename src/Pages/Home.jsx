@@ -2,8 +2,8 @@ import CarouselImg from "@/components/Carousel/CarouselImg";
 
 import HomeDecorC from "@/components/Categ/HomeDecorC";
 import Category from "@/components/Categories/Category";
-import { HighLights } from "@/components/FeatureHighlights/HighLights";
-import { Newsletter } from "@/components/NewsLetter/NewsLetter";
+import HighLights  from "@/components/FeatureHighlights/HighLights";
+import Newsletter from "@/components/NewsLetter/NewsLetter";
 const Home = () => {
   return (
     <div>
