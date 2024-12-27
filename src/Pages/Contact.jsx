@@ -83,7 +83,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Quick Help Box */}
+              
               <div className="mt-8 bg-orange-50 rounded-lg p-4">
                 <div className="flex items-start space-x-3">
                   <AlertCircle className="w-5 h-5 text-orange-500 mt-1" />
@@ -98,7 +98,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+        
           <div className="md:col-span-2">
             <div className="bg-white rounded-xl shadow-sm p-8">
               <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>

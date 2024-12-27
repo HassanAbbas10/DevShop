@@ -27,7 +27,7 @@ const HomeDecorC = ({ Category, Title }) => {
       });
     }
   };
-  const apiUrl = `https://dummyjson.com/products/category/${Category}?q&limit=4`;
+  const apiUrl = `https://dummyjson.com/products/category/${Category}?q&limit=5`;
   const { data, error, isLoading } = useFetch([`${Category}`], apiUrl);
 
   if (error) return <div>The error is {error}</div>;
@@ -45,16 +45,16 @@ const HomeDecorC = ({ Category, Title }) => {
       <h1 className="text-3xl font-semibold text-center mb-8">{Title}</h1>
       <div className="container mx-auto">
         {Array.isArray(data) && data.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 mx-16 sm:mx-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-12 mx-16 sm:mx-24">
             {data.map((cardData) => (
               <div
                 key={cardData.id}
                 className="bg-white rounded-lg overflow-hidden shadow-lg  ring-opacity-40"
               >
                 <div className="relative group">
-                  <div className="w-40 sm:py-10 py-[1.5rem] h-40 sm:h-52 ml-12 overflow-hidden">
+                  <div className="w-40 sm:py-10 py-[1.5rem] flex justify-center items-center h-40 sm:h-52  overflow-hidden">
                     <img
-                      className="object-contain w-full h-full"
+                      className="object-contain w-full h-full "
                       src={cardData.images[0]}
                       alt="Product Image"
                     />
