@@ -8,6 +8,8 @@ import { addToCart } from "@/Redux/cartSlice.js";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
+import { AddShoppingCart } from "@mui/icons-material";
+
 const HomeDecorC = ({ Category, Title }) => {
   const dispatch = useDispatch();
 
@@ -25,7 +27,7 @@ const HomeDecorC = ({ Category, Title }) => {
       });
     }
   };
-  const apiUrl = `https://dummyjson.com/products/category/${Category}?q&limit=5`;
+  const apiUrl = `https://dummyjson.com/products/category/${Category}?q&limit=4`;
   const { data, error, isLoading } = useFetch([`${Category}`], apiUrl);
 
   if (error) return <div>The error is {error}</div>;
@@ -64,30 +66,36 @@ const HomeDecorC = ({ Category, Title }) => {
                     <VisibilityIcon />
                   </div>
                   <div className="absolute left-0 top-3 px-2 py-1 rounded-md bg-red-500 text-white">
-                    40%
+                    {Math.floor(cardData.discountPercentage)}% off
                   </div>
                   <button
                     onClick={() => handleAddToCart(cardData)}
-                    className="absolute flex inset-0 sm:h-10 h-[1.75rem] bottom-0 justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-black top-[8rem] sm:top-[10.75rem] text-white font-bold rounded-b-md"
+                    className="absolute flex  sm:h-10  rounded-full hover:text-white hover:bg-black items-center  right-0 p-3 py-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000   top-10 sm:top-[10.75rem] border border-black font-bold  "
                   >
-                    Add To Cart
+                    <AddShoppingCart color="black" size={24} />
                   </button>
                 </div>
-                <div className="p-4">
+                <div className="p-3">
                   <h3 className="text-sm font-medium mb-2">{cardData.title}</h3>
 
                   <div className="flex flex-col items-start justify-start">
+                    <div className="flex flex-row gap-5 items-start justify-start">
                     <span className="font-bold text-lg text-red-500">
                       ${cardData.price}
                     </span>
+                    <span className={`font-medium text-xs p-1 rounded-lg ${cardData.stock > 0 ? "bg-green-400 text-white" : 'text-red-400'}`}>
+                      {cardData.stock > 0 ? "In Stock" : "Out of Stock"}
+                    </span>
+                    </div>
+                    
                     <div className="flex items-center">
                       {Array.from({ length: 5 }, (_, index) => (
                         <span
                           key={index}
                           className={`text-lg ${
                             index < Math.floor(cardData.rating)
-                              ? "text-yellow-400"
-                              : "text-gray-300"
+                              ? "text-black"
+                              : "text-gray-400"
                           }`}
                         >
                           ★

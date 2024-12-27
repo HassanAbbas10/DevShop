@@ -26,13 +26,13 @@ const Cart = () => {
           {cart.map((item) => (
             <div className="flex justify-between items-center border-b pb-2" key={item.id}>
               <div className="flex gap-4 items-center">
-                <img src={item.thumbnail} alt={item.title} className="rounded-md h-24 w-48" />
+                <img src={item.thumbnail} alt={item.title} className="rounded-lg h-24 w-32" />
                 <div className="flex flex-col">
                   <h1 className="text-lg font-bold">{item.title}</h1>
                   <p className="text-gray-600 py-2">Price: ${item.price}</p>
                   <div className="flex items-center">
 
-                    <button onClick={() => handleRemove(item)} className="text-white ml-4 border border-orange-500 rounded-3xl p-2 bg-red-500 hover:animate-pulse">
+                    <button onClick={() => handleRemove(item)} className="text-white ml-4 border border-orange-500 rounded-xl p-1 bg-red-500 hover:animate-pulse">
                       Remove
                     </button>
                   </div>
