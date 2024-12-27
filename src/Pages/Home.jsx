@@ -15,6 +15,7 @@ const Home = () => {
       <HomeDecorC Title={"Perfumes"} Category={"fragrances"}/>
       <HomeDecorC Title={"Laptops"} Category={"laptops"}/>
       <HomeDecorC Title={"Home Decoration"} Category={"home-decoration"}/>
+      <HomeDecorC Title={"Groceries"} Category={"groceries"}/>
       <HighLights/>
       <Newsletter/>
     </div>
