@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 
-export function Newsletter() {
+const Newsletter =()=> {
   return (
     <section className="bg-black text-white py-12 px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -18,3 +18,4 @@ export function Newsletter() {
     </section>
   )
 }
+export default Newsletter

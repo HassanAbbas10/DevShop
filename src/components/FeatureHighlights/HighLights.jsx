@@ -24,7 +24,7 @@ const features = [
   },
 ]
 
-export function HighLights() {
+const HighLights = () => {
   return (
     <section className="container py-12 px-4">
       <h2 className="text-3xl font-bold text-center mb-8">Why Choose Us</h2>
@@ -44,3 +44,4 @@ export function HighLights() {
     </section>
   )
 }
+export default HighLights
