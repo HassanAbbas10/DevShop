@@ -52,36 +52,40 @@ const Category = () => {
         </div>
 
         <Carousel
-          setApi={setApi}
-          className="w-full"
-          opts={{
-            align: "start",
-            loop: false,
-            skipSnaps: false,
-            slidesToScroll: 1,
-          }}
-        >
-          <CarouselContent className="-ml-4">
-            {categories.map((category) => (
-              <CarouselItem key={category.id} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/6">
-                <Card className="group h-full cursor-pointer overflow-hidden">
-                  <div className="relative flex flex-col items-center justify-center p-6 h-full border border-gray-200 rounded-lg transition-all duration-300 hover:border-red-500 hover:shadow-lg hover:scale-[1.02]">
-                    <div className="w-16 h-16 flex items-center justify-center rounded-full bg-gray-50 group-hover:bg-red-500 transition-colors duration-300">
-                      <IonIcon
-                        name={category.picture}
-                        className="text-3xl text-gray-700 group-hover:text-white transition-colors duration-300"
-                      />
-                    </div>
-                    <h3 className="mt-4 text-lg font-medium text-gray-900 group-hover:text-red-500 transition-colors duration-300">
-                      {category.name}
-                    </h3>
-                    <div className="absolute inset-0 border-2 border-red-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+  setApi={setApi}
+  className="w-full"
+  opts={{
+    align: "start",
+    loop: false,
+    skipSnaps: false,
+    slidesToScroll: 1,
+  }}
+>
+  <CarouselContent className="-ml-4">
+    {categories.map((category) => (
+      <CarouselItem
+        key={category.id}
+        className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-1/6"
+      >
+        <Card className="group h-full cursor-pointer overflow-hidden">
+          <div className="relative flex flex-col items-center justify-center p-6 h-full border border-gray-200 rounded-lg transition-all duration-300 hover:border-red-500 hover:shadow-lg hover:scale-[1.02]">
+            <div className="w-16 h-16 flex items-center justify-center rounded-full bg-gray-50 group-hover:bg-red-500 transition-colors duration-300">
+              <IonIcon
+                name={category.picture}
+                className="text-3xl text-gray-700 group-hover:text-white transition-colors duration-300"
+              />
+            </div>
+            <h3 className="mt-4 text-lg font-medium text-gray-900 group-hover:text-red-500 transition-colors duration-300">
+              {category.name}
+            </h3>
+            <div className="absolute inset-0 border-2 border-red-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+        </Card>
+      </CarouselItem>
+    ))}
+  </CarouselContent>
+</Carousel>
+
 
    
         <div className="flex justify-center gap-2 mt-6">

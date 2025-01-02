@@ -56,7 +56,7 @@ const Search = () => {
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 rounded-full w-[22rem] sm:w-[24rem]"
           onClick={() => setIsListOpen(true)}
         />
-        <button  className="bg-orange-500 hover:bg-blue-300 text-white font-bold py-1 px-1.5 border-orange-400 rounded-full absolute sm:right-1 right-[-0.5rem] ">
+        <button  className="bg-orange-500 hover:bg-blue-300 text-white font-bold py-1 px-1.5 border-orange-400 rounded-full absolute sm:right-1 right-[1.5rem] ">
           <SearchIcon />
         </button>
       </div>

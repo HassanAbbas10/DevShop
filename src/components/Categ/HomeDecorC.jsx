@@ -45,7 +45,7 @@ const HomeDecorC = ({ Category, Title }) => {
       <h1 className="text-3xl font-semibold text-center mb-8">{Title}</h1>
       <div className="container mx-auto">
         {Array.isArray(data) && data.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-12 mx-16 sm:mx-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-12 mx-20 sm:mx-24">
             {data.map((cardData) => (
               <div
                 key={cardData.id}
@@ -70,7 +70,7 @@ const HomeDecorC = ({ Category, Title }) => {
                   </div>
                   <button
                     onClick={() => handleAddToCart(cardData)}
-                    className="absolute flex  sm:h-10  rounded-full hover:text-white hover:bg-black items-center  right-0 p-3 py-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000   top-10 sm:top-[10.75rem] border border-black font-bold  "
+                    className="absolute flex h-10 sm:h-10  rounded-full hover:text-white hover:bg-black items-center  right-0 p-3 py-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000   top-20 sm:top-[10.75rem] border border-black font-bold  "
                   >
                     <AddShoppingCart color="black" size={24} />
                   </button>
